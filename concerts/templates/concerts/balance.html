@@ -1,0 +1,23 @@
+{% extends 'concerts/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+    <div class="balancebox">
+            <form action = "#" method = "post">
+                <div class="userbalance">
+                <h1 style="text-align: center;">Welcome to Pay Wall</h1>
+                <h2 style="text-align:center"> Your own payment wallet </h2>
+                <br><br>
+                <h3> Here you can add balance to your Account to make it convenient for you to pay for the concerts you love.</h3>
+                <h3>Your Current Balance:{{ request.user.balance }}</h3>
+                </div>
+                <br>
+                {% csrf_token %}
+                <label for="add_balance">Add balance: </label>
+                <input  class="balance_input" id="add_balance" type="number" name="add_balance">
+                <input type="submit" value="OK">
+            </form>
+    </div>
+
+{% endblock %}

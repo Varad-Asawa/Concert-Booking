@@ -1,0 +1,27 @@
+{% extends 'concerts/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+    <section id="frontpage">
+        <div class="welcomeText">
+            <br>
+            <h1>Feeling Bored ?</h1>
+            <br>
+            <h2 style="text-align: center;font-size: 50px;color: rgb(255, 255, 255); margin-top: 30px;">Check Out These Top Concerts</h2>
+        </div>
+    </section>
+    <section id="rc">
+    <div class="boxContainer">
+        {%for concert in random_concerts %}
+            <div class="box">
+                <div class="glass"></div>
+                <div class="contentInside">
+                    <a href="{% url 'concertPage' concertName=concert.name %}"><img src="{{ concert.poster }}" style="width: 300px ; height:450px;"></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

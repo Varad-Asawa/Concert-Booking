@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'concerts/index.css' %}" />
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="hero-bkg-animated">
+    </div>
+    <div class="homepagetitle">
+        <div class='parent flex-parent'>
+        <div class='child flex-child item-1'><h1>Concert Booking System</h1></div>
+        <div class='child flex-child item-2'><a href="{% url 'login' %}"> <img src="{% static 'concerts/logo.png' %}" style="width: 460px; margin-bottom: 30px; margin-top: 30px;"></a></div>
+        </div>
+
+    </div>
+    <div class="loginBox">
+<!--         <a href="{% url 'login' %}"> <img src="{% static 'concerts/logo.png' %}" style="width: 460px; margin-bottom: 30px; margin-top: 30px;"></a> -->
+
+        <div class="rightForm">
+            <h2>Login</h2>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div id="message" style="color: white; z-index: 2; position: relative;">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="inputBox">
+                    <input type="text" name="username" autocomplete="off" required>
+                    <label> Username</label>
+                </div>
+
+                <div class="inputBox">
+                    <input type="password" name="password" required>
+                    <label> Password</label>
+                </div>
+
+                <input type="submit" name="" value="Submit">
+            </form>
+            <a href="{% url 'register' %}"><u>Don't have an account?</u></a>
+        </div>
+    </div>
+
+</body>
+</html>

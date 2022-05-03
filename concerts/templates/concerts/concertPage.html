@@ -1,0 +1,35 @@
+{% extends 'concerts/layout.html' %}
+
+
+{% block body %}
+
+    <div id="posterBox">
+        <div id="posterInnerBox">
+            <div class="topInfoLeft">
+                <div class="concertBanner"></div>
+            </div>
+
+            <div class="topInfoRight">
+                <h1> {{ concert.name }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="concertContainer">
+        <div class="concertInfoLeft">
+            <div class="concertBanner">
+                <img src="{{ concert.poster }}" style="width:200px;height:300px">
+            </div>
+        </div>
+
+        <div class="concertInfoRight">
+            <h2>Synopsis</h2>
+            <p>{{ concert.about }}</p>
+
+            <form id="bookTicketPage" action="{% url 'book_seat' concertName=concert %}" method="GET">
+                <button type="submit" form="bookTicketPage" id="selectHall">Book Seats</button>
+            </form>
+
+        </div>
+        
+{% endblock %}
